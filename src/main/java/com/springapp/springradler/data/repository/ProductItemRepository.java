@@ -2,13 +2,17 @@ package com.springapp.springradler.data.repository;
 
 import java.util.Map;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
 import com.springapp.springradler.data.entity.ProductItem;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 @Repository // contains exception translation.
@@ -29,8 +33,8 @@ public class ProductItemRepository {
         int pageSize = pageable.getPageSize();
 
         // Sorting is ignored
-        final var items = data.values().stream().skip(offset).limit(pageSize).sorted(comparing(ProductItem::getId))
-                .collect(Collectors.toList());
+        final var items = data.values().stream().skip(offset).limit(pageSize)
+                .sorted(Comparator.comparing(ProductItem::getId)).collect(Collectors.toList());
 
         return new PageImpl<>(items, pageable, data.size());
     }

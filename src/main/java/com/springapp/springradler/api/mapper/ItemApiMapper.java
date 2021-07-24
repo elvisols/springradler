@@ -2,24 +2,16 @@ package com.springapp.springradler.api.mapper;
 
 import com.springapp.springradler.api.dto.CreateItemDTO;
 import com.springapp.springradler.api.dto.UpdateItemDTO;
+import com.springapp.springradler.service.domain.CreateItemRequest;
+import com.springapp.springradler.service.domain.UpdateItemRequest;
 
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
 
-@Component
-public class ItemApiMapper {
+@Mapper(componentModel = "spring")
+public interface ItemApiMapper {
 
-    public CreateItemRequest map(CreateItemDTO createItemDto) {
+    CreateItemRequest map(CreateItemDTO createItemDto);
 
-        return CreateItemRequest.builder()
-                .title(createItemDto.getTitle())
-                .build();
-    }
+    UpdateItemRequest map(UpdateItemDTO updateItemDto);
 
-    public UpdateItemRequest map(UpdateItemDTO updateItemDto) {
-        
-        return UpdateItemRequest.builder()
-                .title(updateItemDto.getTitle())
-                .build();
-    }
-    
 }

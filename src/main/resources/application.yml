@@ -1,2 +1,23 @@
 server:
   port: 9001
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/springradle-db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: false
+  liquibase:
+    contexts: prod
+  redis:
+    port: 6380
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
