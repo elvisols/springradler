@@ -14,7 +14,7 @@ spring:
   liquibase:
     contexts: prod
   redis:
-    port: 6380
+    port: 6379
 
 management:
   endpoints:
