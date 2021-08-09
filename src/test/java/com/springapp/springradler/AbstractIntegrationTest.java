@@ -5,10 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.util.TestPropertyValues;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.testcontainers.containers.GenericContainer;
@@ -54,6 +57,7 @@ public abstract class AbstractIntegrationTest {
 
         @Override
         public void initialize(ConfigurableApplicationContext context) {
+
             TestPropertyValues
                     .of("spring.datasource.url=" + POSTGRESQL_CONTAINER.getJdbcUrl(),
                             "spring.datasource.username=" + POSTGRESQL_CONTAINER.getUsername(),
@@ -68,6 +72,7 @@ public abstract class AbstractIntegrationTest {
 
         @Override
         public void initialize(ConfigurableApplicationContext context) {
+
             TestPropertyValues
                     .of("spring.redis.host=" + REDIS_CONTAINER.getHost(),
                             "spring.redis.port=" + REDIS_CONTAINER.getFirstMappedPort())

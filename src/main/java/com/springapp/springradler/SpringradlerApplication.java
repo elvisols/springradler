@@ -2,10 +2,8 @@ package com.springapp.springradler;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.springapp.springradler/build/classes/java/main/com/springapp/springradler/service/mapper")
 public class SpringradlerApplication {
 
 	public static void main(String[] args) {

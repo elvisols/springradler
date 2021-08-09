@@ -23,19 +23,21 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequestMapping(value = ENDPOINT, produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
 public class ItemController {
 
-    public static final String ENDPOINT = "/items";
-    public static final String ENDPOINT_BY_ID = "/{id}";
+    public static final String ENDPOINT = "items";
+    public static final String ENDPOINT_BY_ID = "{id}";
 
     private final ItemService service;
     private final ItemApiMapper mapper;
 
     @GetMapping
     public Page<Item> find(@PageableDefault(sort = "id") Pageable pageable) {
+
         return service.findAll(pageable);
     }
 
     @GetMapping(value = ENDPOINT_BY_ID)
     public Item get(@PathVariable Long id) {
+
         return service.getOne(id);
     }
 

@@ -1,4 +1,4 @@
-package com.springapp.springradler.config;
+package com.springapp.springradler;
 
 import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCustomizer;
 import org.springframework.cache.CacheManager;
@@ -11,8 +11,8 @@ import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext.SerializationPair;
 
-@Configuration
-@EnableCaching
+// @Configuration
+// @EnableCaching
 public class CacheConfiguration {
 
     public static final String ITEMS_CACHE = "items";
@@ -29,5 +29,10 @@ public class CacheConfiguration {
 
         return RedisCacheManager.RedisCacheManagerBuilder::enableStatistics;
     }
+
+    // @Bean
+    // public CacheManager cacheManager() {
+    //     return new ConcurrentMapCacheManager("default");
+    // }
 
 }
