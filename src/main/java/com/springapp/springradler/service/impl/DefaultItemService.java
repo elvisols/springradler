@@ -23,9 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class DefaultItemService implements ItemService {
 
     private final ProductItemRepository repository;
-    // private final ProductItemMapper mapper;
-
-    ProductItemMapper mapper = ProductItemMapper.INSTANCE;
+    private final ProductItemMapper mapper;
 
     @Override
     public Page<Item> findAll(Pageable pageable) {

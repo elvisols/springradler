@@ -46,7 +46,7 @@ class DefaultItemServiceTest {
         when(repository.findAll(pageable)).thenReturn(new PageImpl<>(List.of(productItem), pageable, total));
 
         when(mapper.map(new PageImpl<>(List.of(productItem), pageable, total)))
-                .thenReturn(new PageImpl<>(List.of(item), pageable, total));
+        .thenReturn(new PageImpl<>(List.of(item), pageable, total));
 
         final Page<Item> items = service.findAll(pageable);
         assertThat(items).hasSize(1);

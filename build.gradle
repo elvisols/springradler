@@ -58,7 +58,11 @@ test {
 
 sourceSets.test.resources.srcDir 'src/test/resources'
 
-// fix to mapstruct mapper
+task copyDocs(type: Copy) {
+    duplicatesStrategy = 'include'
+}
+
+// a hack to mapstruct mapper issues
 eclipse {
     classpath {
         containers 'org.eclipse.buildship.core.gradleclasspathcontainer'
